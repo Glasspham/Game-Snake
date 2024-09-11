@@ -1,0 +1,33 @@
+body {
+    background-color: #121212;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+#gameCanvas {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+}
+
+#game-info {
+    font-size: 20px;
+}
+
+.red-icon {
+    color: red;
+}
+
+#game-over {
+    color: red;
+    font-weight: bold;
+}
