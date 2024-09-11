@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 500;
-canvas.height = 500;
+canvas.width = 1300;
+canvas.height = 550;
 
 let snake = [
     { x: 50, y: 50 },
@@ -15,6 +15,17 @@ let score = 0;
 let level = 1;
 let speed = 100;
 let isGameOver = false;
+
+// Detect if the user is on a mobile device
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+// Show or hide controls based on device type
+const controls = document.getElementById('mobile-controls');
+if (isMobile) {
+    controls.classList.remove('hidden');
+} else {
+    controls.classList.add('hidden');
+}
 
 // Ask user for starting level
 level = prompt('Enter the starting level (1-6):');
@@ -103,7 +114,7 @@ function gameLoop() {
     }, speed);
 }
 
-// Handle input
+// Handle keyboard input
 document.addEventListener('keydown', (event) => {
     const key = event.key;
     if (key === 'ArrowUp' && snakeDirection.y === 0) {
@@ -115,6 +126,23 @@ document.addEventListener('keydown', (event) => {
     } else if (key === 'ArrowRight' && snakeDirection.x === 0) {
         snakeDirection = { x: 10, y: 0 };
     }
+});
+
+// Handle mobile input (button controls)
+document.getElementById('upBtn').addEventListener('click', () => {
+    if (snakeDirection.y === 0) snakeDirection = { x: 0, y: -10 };
+});
+
+document.getElementById('downBtn').addEventListener('click', () => {
+    if (snakeDirection.y === 0) snakeDirection = { x: 0, y: 10 };
+});
+
+document.getElementById('leftBtn').addEventListener('click', () => {
+    if (snakeDirection.x === 0) snakeDirection = { x: -10, y: 0 };
+});
+
+document.getElementById('rightBtn').addEventListener('click', () => {
+    if (snakeDirection.x === 0) snakeDirection = { x: 10, y: 0 };
 });
 
 // Start the game
