@@ -20,7 +20,7 @@ let isGameOver = false;
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 // Show or hide controls based on device type
-const controls = document.getElementById('mobile-controls');
+const controls = document.getElementById('controls');
 if (isMobile) {
     controls.classList.remove('hidden');
 } else {
